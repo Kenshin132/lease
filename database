@@ -1,0 +1,15 @@
+-- Create a new database
+CREATE DATABASE IF NOT EXISTS property_management;
+
+-- Use the newly created database
+USE property_management;
+
+-- Create the properties table
+CREATE TABLE IF NOT EXISTS properties (
+    property_id INT AUTO_INCREMENT PRIMARY KEY,
+    property_name VARCHAR(255) NOT NULL,
+    year_acquired INT NOT NULL,
+    property_cost DECIMAL(10, 2) NOT NULL,
+    leasing_cost DECIMAL(10, 2) GENERATED ALWAYS AS (property_cost * 0.25) STORED,
+    lease_rate DECIMAL(5, 2) NOT NULL DEFAULT 0
+);
